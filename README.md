@@ -1,4 +1,4 @@
-# Intel ® Graphics Performance Analyzers plugin for Unreal Engine* 4
+# Intel® Graphics Performance Analyzers plugin for Unreal Engine* 4
 
 > To the [documentation and setup guide](https://software.intel.com/editor.html/content/www/us/en/develop/articles/unreal-engine-4-intel-gpa-usage-guide.html).
 
