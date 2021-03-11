@@ -1,12 +1,10 @@
 # Intel® Graphics Performance Analyzers plugin for Unreal Engine* 4
 
-> To the [documentation and setup guide](https://software.intel.com/editor.html/content/www/us/en/develop/articles/unreal-engine-4-intel-gpa-usage-guide.html).
+> To the [overview and setup guide](https://software.intel.com/editor.html/content/www/us/en/develop/articles/unreal-engine-4-intel-gpa-usage-guide.html).
 
 ## Introduction
 
-Intel® Graphics Performance Analyzers (Intel® GPA) is a toolset that helps to find rendering performance bottlenecks. A game or other application  
-can be invoked via Intel GPA, allowing you to see FPS, shader details, texture details, and draw call details. Now, with the the Unreal Engine* 4 (UE4)  
-plugin, you can capture a multi-frame stream directly while you are in Unreal Editor and analyze it in Graphics Frame Analyzer.
+Intel® Graphics Performance Analyzers (Intel® GPA) is a toolset that helps to find rendering performance bottlenecks. A game or other application can be invoked via Intel GPA, allowing you to see FPS, shader details, texture details, and draw call details. Now, with the the Unreal Engine* 4 (UE4) plugin, you can capture a multi-frame stream directly while you are in Unreal Editor and analyze it in Graphics Frame Analyzer.
 
 ### Key Goals
 
