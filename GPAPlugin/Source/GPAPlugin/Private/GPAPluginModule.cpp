@@ -46,14 +46,6 @@ static TAutoConsoleVariable<FString> CVarGPABinaryLocation(
 	TEXT(""),
 	TEXT("Path that will be used to locate GPA Framework binaries."));
 
-// TODO - Frame capture count is planned for future update
-/*
-static TAutoConsoleVariable<int32> CVarGPAFrameCaptureCount(
-	TEXT("gpa.FrameCaptureCount"),
-	0,
-	TEXT("	0: capture will run until stopped.")
-	TEXT("	>0: capture automatically stop after reaching specified number of frames."));
-*/
 static TAutoConsoleVariable<int32> CVarGPARunGPAAfterCapture(
 	TEXT("gpa.RunGPAAfterCapture"),
 	0,
@@ -277,6 +269,15 @@ void FGPAPluginModule::StartupModule()
 	// Apply settings from ini file, this will update the console variables and project settings
 	ApplyCVarSettingsFromIni(TEXT("/Script/GPAPlugin.GPAPluginSettings"), *GEngineIni, ECVF_SetByProjectSetting);
 
+#if WITH_EDITOR
+	// make sure we are running with a valid Windows context, quit if running in command line mode
+	FString ExecutableName = FString(FPlatformProcess::ExecutableName());
+	if (FPaths::GetBaseFilename(ExecutableName).EndsWith("-cmd", ESearchCase::IgnoreCase))
+	{
+		return;
+	}
+#endif
+
 	// Load all 3rd party libraries that have seen delay loaded
 	LoadThirdPartyLibraries();
 
@@ -285,6 +286,9 @@ void FGPAPluginModule::StartupModule()
 	{
 		std::string Path = std::string(TCHAR_TO_UTF8(*CVarGPABinaryLocation.GetValueOnAnyThread()));
 		gpa = GetGPAInterface(Path);
+		// add deferred capture layer do GPA shim
+		gpa->AddLayer("capture");
+		gpa->AddLayerParameter("capture", "deferred", "true");
 		if (gpa != nullptr && (gpa->Initialize() != IGPA::Result::Ok)) 
 		{
 			UE_LOG(GPAPlugin, Warning, TEXT("Failed to initialize GPA capture library!"));
@@ -296,7 +300,7 @@ void FGPAPluginModule::StartupModule()
 	}
 
 	// register console variables that tie into the capture start/stop UI button
-	static FAutoConsoleCommand CCmdRenderDocCapturePIE = FAutoConsoleCommand(
+	static FAutoConsoleCommand CCmdGPACapturePIE = FAutoConsoleCommand(
 		TEXT("gpa.StreamCapture"),
 		TEXT("	start: starts GPA stream capture")
 		TEXT("	stop: stops GPA stream capture"),
