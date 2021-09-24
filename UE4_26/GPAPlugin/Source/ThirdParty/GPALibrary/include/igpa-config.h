@@ -1,28 +1,22 @@
 /******************************************************************************
-© Intel Corporation.
- 
-This software and the related documents are Intel copyrighted materials,
-and your use of them is governed by the express license under which they
-were provided to you ("License"). Unless the License provides otherwise,
-you may not use, modify, copy, publish, distribute, disclose or transmit
-this software or the related documents without Intel's prior written
-permission.
+© Intel Corporation
 
-
- This software and the related documents are provided as is, with no express
-or implied warranties, other than those that are expressly stated in the
-License.
+SPDX-License-Identifier: MIT
 
 ******************************************************************************/
 #pragma once
 
 /* #undef HAVE_PTHREAD_H */
 #define HAVE_VULKAN 1
+#define HAVE_OPENGL 1
+#define HAVE_OPENCL 1
 /* #undef HAVE_METAL */
 #define HAVE_DIRECTX 1
 /* #undef HAVE_CPATHAPI */
 /* #undef HAVE_COMPATHAPI */
 /* #undef HAVE_OBJCPATHAPI */
+
+#define CL_TARGET_OPENCL_VERSION 300
 
 #if defined(HAVE_VULKAN)
     #if defined(__ANDROID__)
@@ -101,7 +95,7 @@ License.
 
         #define STD_STRING std::string
         #define STD_TO_STRING std::to_string
-        #define SPRINTF(dst, count, fmt, ...) sprintf_s sprintf_s(dst, count, fmt, __VA_ARGS__)
+        #define SPRINTF(dst, count, fmt, ...) sprintf_s(dst, count, fmt, __VA_ARGS__)
         #define STRCMP(a, b) strcmp(a, b)
         #define ATOI(str) atoi(str)
         #define TCHAR_FORMAT_SPECIFIER "%s"

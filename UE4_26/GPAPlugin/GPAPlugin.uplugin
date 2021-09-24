@@ -10,10 +10,10 @@
 	"DocsURL": "https://software.intel.com/content/www/us/en/develop/tools/documentation-library.html?query=&currentPage=1&externalFilter=rsoftware:componentsproducts/intelgraphicsperformanceanalyzers;",
 	"MarketplaceURL": "",
 	"SupportURL": "",
-	"EnabledByDefault": false,
+	"EngineVersion": "4.26.0",
 	"CanContainContent": false,
 	"IsBetaVersion": true,
-	"Installed": false,
+	"Installed": true,
 	"Modules": [
 		{
 			"Name": "GPAPlugin",
