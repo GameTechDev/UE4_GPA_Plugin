@@ -2,6 +2,12 @@
 
 > To the [overview and setup guide](https://software.intel.com/content/www/us/en/develop/articles/unreal-engine-4-intel-gpa-usage-guide.html).
 
+**Note:**	 No recompilation should be needed when integrating this plugin with release builds of Unreal Engine 4.26 and Unreal Engine 4.27. <br>
+However, if UE4 reports an error that a module is missing or the plugin was built with a different engine version, please follow these steps:
+1. Open the terminal and go to _\<UE4 install directory\>\Engine\Build\BatchFiles_
+2. Run the command line: _RunUAT.bat BuildPlugin -plugin="\<Full path to downloaded plugin location\>\GPAPlugin\GPAPlugin.uplugin" -package="\<Full path to rebuilt plugin location\>\GPAPlugin"_
+3. Copy the newly built GPAPlugin folder to _\<UE4 install directory\>\Plugins\Developer_
+
 ## Introduction
 
 Intel® Graphics Performance Analyzers (Intel® GPA) is a toolset that helps to find rendering performance bottlenecks. A game or other application can be invoked via Intel GPA, allowing you to see FPS, shader details, texture details, and draw call details. Now, with the the Unreal Engine* 4 (UE4) plugin, you can capture a multi-frame stream directly while you are in Unreal Editor and analyze it in Graphics Frame Analyzer.

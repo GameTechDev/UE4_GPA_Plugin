@@ -67,6 +67,8 @@ enum HookApiFlagBits : uint32_t {
     kHookD3D12 = 1 << 2,
     kHookVulkan = 1 << 3,
     kHookMetal = 1 << 4,
+    kHookOpenGL = 1 << 5,
+    kHookOpenCL = 1 << 6,
     kHookWin32 = 1 << 10,
     kHookD3D = kHookD3D10 | kHookD3D11 | kHookD3D12,
     kHookAll = UINT32_MAX
