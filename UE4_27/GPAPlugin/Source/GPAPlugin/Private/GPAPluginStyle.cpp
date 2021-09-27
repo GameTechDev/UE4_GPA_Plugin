@@ -70,6 +70,7 @@ TSharedRef<FSlateStyleSet> FGPAPluginStyle::Create()
 	Style->SetContentRoot(IPluginManager::Get().FindPlugin("GPAPlugin")->GetBaseDir() / TEXT("Resources"));
 
 	Style->Set("GPAPlugin.StreamCaptureAction", new IMAGE_BRUSH(TEXT("GPA_Analyzer_64x"), Icon40x40));
+	Style->Set("GPAPlugin.StreamCaptureAction.Small", new IMAGE_BRUSH(TEXT("GPA_Analyzer_64x"), Icon20x20));
 
 	return Style;
 }
